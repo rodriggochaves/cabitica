@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+
  
   get '/last_task' => 'tasks#last_task'
   get '/tasks/:id' => 'tasks#show'
   get '/tasks' => 'tasks#index'
   post '/tasks' => 'tasks#create'
+
+  # root 'users#new'
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  devise_scope :user do
+    authenticated :user do
+      root 'users/sessions#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'users/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
