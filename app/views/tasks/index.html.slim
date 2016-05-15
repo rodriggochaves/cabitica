@@ -1,8 +1,21 @@
-h1 Tarefas
+br
 
-= text_field_tag :description, "", class: "task__description"
-button.button.task__add Adicionar
+div.row
+  h1 Tarefas
 
-- @tasks.each do |task|
-  ul
-    li = task.description  
+br
+
+div.row
+  div.input-group
+    = text_field_tag :description, "", 
+      class: "task__description input-group-field"
+    div.input-group-button
+      button.button.task__add Adicionar
+
+br
+
+.row
+  div.tasks__list
+    - @tasks.each do |task|
+      div.callout.task__callout
+        p = task.description

@@ -1,3 +1,21 @@
+var reloadTasks = function() {
+  $.ajax("/last_task.json", {
+    success: function(data) {
+      $(".tasks__list").append($('<div>', {
+        class: "callout task__callout"
+      }));
+      $(".task__callout").last().append($('<p>', {
+        text: data.description
+      }));
+      $(".task__description").val("");
+    },
+    error: function(er) {
+      console.log("Error loading last task");
+      console.log(er);
+    }   
+  });
+};
+
 $(document).ready(function() {
   $('.task__add').click(function() {
     var description = $('.task__description').val();
@@ -10,12 +28,10 @@ $(document).ready(function() {
       },
       dataType: "json",
       success: function(resp) {
-        console.log("smile");
-        console.log(resp);
+        reloadTasks();
       },
       error: function(er) {
-        console.log("saddens");
-        console.log(er.responseText);
+        console.log(er);
       }
     })
   });

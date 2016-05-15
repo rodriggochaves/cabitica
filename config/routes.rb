@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  get '/last_task' => 'tasks#last_task'
   get '/tasks/:id' => 'tasks#show'
   get '/tasks' => 'tasks#index'
   post '/tasks' => 'tasks#create'

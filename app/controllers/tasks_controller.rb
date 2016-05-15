@@ -15,6 +15,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def last_task
+    @task = Task.last
+    render :show
+  end
+
   private
   def task_params
     params.permit(:description)
