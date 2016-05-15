@@ -14,12 +14,6 @@ div.row
 
 br
 
-.task__model.hide
-  span.switch.tiny
-    input.switch-input type="checkbox" id="task__complete"
-    label.switch-paddle for="task__complete"
-      span.show-for-sr Completar tarefa
-
 .row
   div.tasks__list
     - @tasks.each do |task|

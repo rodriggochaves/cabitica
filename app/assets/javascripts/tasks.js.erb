@@ -1,3 +1,5 @@
+// TODO: fazer esse método importar uma partial de html.
+
 var makeTaskCompleteButton = function(id) {
   return "<span class='switch tiny'>" 
     + "<input class='switch-input' id='task__complete"
@@ -42,6 +44,6 @@ $(document).ready(function() {
       error: function(er) {
         console.log(er);
       }
-    })
+    });
   });
 });
