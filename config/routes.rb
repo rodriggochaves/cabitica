@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # root 'users#new'
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { 
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   devise_scope :user do
     authenticated :user do
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
       root 'users/sessions#new', as: :unauthenticated_root
     end
 
-    get 'signup' => 'devise/registrations#new'
+    get 'signup' => 'users/registrations#new'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
