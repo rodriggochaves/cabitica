@@ -1,9 +1,18 @@
+var makeTaskCompleteButton = function(id) {
+  return "<span class='switch tiny'>" 
+    + "<input class='switch-input' id='task__complete"
+    + id +"' type='checkbox' />" 
+    + "<label class='switch-paddle' for='task__complete" + id + "'>" 
+    + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
+}
+
 var reloadTasks = function() {
   $.ajax("/last_task.json", {
     success: function(data) {
       $(".tasks__list").append($('<div>', {
         class: "callout task__callout"
       }));
+      $(".task__callout").last().html(makeTaskCompleteButton(data.id));
       $(".task__callout").last().append($('<p>', {
         text: data.description
       }));
