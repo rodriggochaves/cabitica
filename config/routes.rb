@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     unauthenticated do
       root 'users/sessions#new', as: :unauthenticated_root
     end
+
+    get 'signup' => 'devise/registrations#new'
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

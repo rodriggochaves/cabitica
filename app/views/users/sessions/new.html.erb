@@ -3,7 +3,6 @@
   <div class="row">
     <div class="large-12 columns">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%# <%= devise_error_messages! %>
         <div class="row">
           <div class="large-12 columns">
             <%= f.email_field :email, autofocus: true, placeholder: "email" %>
@@ -20,6 +19,11 @@
           </div>
         </div>
       <% end %>
+      <div class="row">
+        <div class="large-12 large-centered columns">
+          <%= link_to "New account", signup_path, class: "button expand" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
