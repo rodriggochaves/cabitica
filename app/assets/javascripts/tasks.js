@@ -10,10 +10,12 @@ $(document).ready(function() {
       },
       dataType: "json",
       success: function(resp) {
+        console.log("smile");
         console.log(resp);
       },
       error: function(er) {
-        console.log(er);
+        console.log("saddens");
+        console.log(er.responseText);
       }
     })
   });
