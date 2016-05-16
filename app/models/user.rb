@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  VALID_EMAIL_REGEX = /[\w+\-.]+@cjr\.org\.br+/i
+  CJR_EMAIL_REGEX = /[\w+\-.]+@cjr\.org\.br+/i
   validates :email, presence: true, length: { maximum: 255 },
-            format: { with: VALID_EMAIL_REGEX }, 
+            format: { with: CJR_EMAIL_REGEX }, 
             uniqueness: { case_sensitive: false }
 end
