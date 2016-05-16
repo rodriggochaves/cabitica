@@ -8,13 +8,27 @@ var makeTaskCompleteButton = function(id) {
     + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
 }
 
+var completeTask = function(taskId) {    
+  $.ajax({
+    url: '/complete_task/' + taskId,
+    type: 'GET',
+    success: function(resp) {
+      console.log(resp)
+    },
+    error: function(err) {
+      console.log(err)
+    }
+  });
+}
+
 var reloadTasks = function() {
   $.ajax("/last_task.json", {
     success: function(data) {
       $(".tasks__list").append($('<div>', {
         class: "callout task__callout"
       }));
-      $(".task__callout").last().html(makeTaskCompleteButton(data.id));
+      $(".task__callout").last()
+        .html(makeTaskCompleteButton(data.id));
       $(".task__callout").last().append($('<p>', {
         text: data.description
       }));
