@@ -3,22 +3,33 @@
 var makeTaskCompleteButton = function(id) {
   return "<span class='switch tiny'>" 
     + "<input class='switch-input' id='task__complete_"
-    + id +"' type='checkbox' />" 
+    + id +"' type='checkbox' onclick=\"completeTask("+ this +")\"/>" 
     + "<label class='switch-paddle' for='task__complete_" + id + "'>" 
     + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
 }
 
-var completeTask = function(taskId) {    
-  $.ajax({
-    url: '/complete_task/' + taskId,
-    type: 'GET',
-    success: function(resp) {
-      console.log(resp)
-    },
-    error: function(err) {
-      console.log(err)
+function extractIdNumber(elem){
+  idAttribute = elem.getAttribute("id");
+  idNum = idAttribute.substring(idAttribute.lastIndexOf("_")+1);
+  return idNum;
+}
+
+var completeTask = function(taskElem) {    
+  setTimeout(function() {
+    taskId = extractIdNumber(taskElem);
+    if(taskElem.checked){
+      $.ajax({
+        url: '/complete_task/' + taskId,
+        type: 'GET',
+        success: function(resp) {
+          console.log(resp)
+        },
+        error: function(err) {
+          console.log(err)
+        }
+      });
     }
-  });
+  }, 3000);
 }
 
 var reloadTasks = function() {

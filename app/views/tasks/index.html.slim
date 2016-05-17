@@ -19,8 +19,10 @@ br
     - @tasks.each do |task|
       div.callout.task__callout
         span.switch.tiny
-          input.switch-input type="checkbox" id="task__complete#{task.id}"class="task_complete"
-          label.switch-paddle for="task__complete#{task.id}"
+          input.switch-input [type="checkbox" id="task__complete_#{task.id}"
+            class="task_complete" 
+            onclick="completeTask(this)"]
+          label.switch-paddle for="task__complete_#{task.id}"
             span.show-for-sr Completar tarefa
         p = task.description
         button.close-button
