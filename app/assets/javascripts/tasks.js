@@ -15,9 +15,10 @@ function extractIdNumber(elem){
 }
 
 var completeTask = function(taskElem) {    
-  setTimeout(function() {
+  var sendCompleteTaskRequest = function() {
     taskId = extractIdNumber(taskElem);
     if(taskElem.checked){
+      console.log("Sent request");
       $.ajax({
         url: '/complete_task/' + taskId,
         type: 'GET',
@@ -29,7 +30,13 @@ var completeTask = function(taskElem) {
         }
       });
     }
-  }, 3000);
+  };
+  var taskParent = taskElem.parentElement.parentElement;
+  if(taskElem.checked){
+    $(taskParent).fadeOut(3000, "swing", sendCompleteTaskRequest);
+  } else {
+    $(taskParent).stop().animate({opacity:'100'});
+  }
 }
 
 var reloadTasks = function() {
