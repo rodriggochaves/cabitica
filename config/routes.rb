@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'users/sessions#index', as: :authenticated_root
+      root 'tasks#index', as: :authenticated_root
     end
 
     unauthenticated do

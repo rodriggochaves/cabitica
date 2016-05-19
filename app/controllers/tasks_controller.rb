@@ -2,15 +2,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :complete_task]
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def show
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.completed = false
+    @task = current_user.tasks.new(task_params)
 
     if @task.save
       render :show
