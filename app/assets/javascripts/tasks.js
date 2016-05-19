@@ -3,7 +3,7 @@
 var makeTaskCompleteButton = function(id) {
   return "<span class='switch tiny'>" 
     + "<input class='switch-input' id='task__complete_"
-    + id +"' type='checkbox' onclick=\"completeTask("+ this +")\"/>" 
+    + id +"' type='checkbox' />" 
     + "<label class='switch-paddle' for='task__complete_" + id + "'>" 
     + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
 }
@@ -17,19 +17,16 @@ function extractIdNumber(elem){
 var completeTask = function(taskElem) {    
   var sendCompleteTaskRequest = function() {
     taskId = extractIdNumber(taskElem);
-    if(taskElem.checked){
-      console.log("Sent request");
-      $.ajax({
-        url: '/complete_task/' + taskId,
-        type: 'GET',
-        success: function(resp) {
-          console.log(resp)
-        },
-        error: function(err) {
-          console.log(err)
-        }
-      });
-    }
+    $.ajax({
+      url: '/complete_task/' + taskId,
+      type: 'GET',
+      success: function(resp) {
+        console.log(resp)
+      },
+      error: function(err) {
+        console.log(err)
+      }
+    });
   };
   var taskParent = taskElem.parentElement.parentElement;
   if(taskElem.checked){
@@ -39,7 +36,7 @@ var completeTask = function(taskElem) {
   }
 }
 
-var reloadTasks = function() {
+var appendLastTask = function() {
   $.ajax("/last_task.json", {
     success: function(data) {
       $(".tasks__list").append($('<div>', {
@@ -72,11 +69,14 @@ $(document).ready(function() {
       },
       dataType: "json",
       success: function(resp) {
-        reloadTasks();
+        appendLastTask();
       },
       error: function(er) {
         console.log(er);
       }
     });
+  });
+  $('.tasks__list').on("click", ".switch-input", function(){
+    completeTask(this);
   });
 });
