@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new(task_params)
 
     if @task.save
-      render :show
+      respond_to :js
     end
   end
 
