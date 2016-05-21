@@ -11,6 +11,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+    @task.experience = 10;
 
     if @task.save
       render :show
@@ -24,8 +25,9 @@ class TasksController < ApplicationController
 
   def complete_task
     @task.completed = true
+    current_user.experience += @task.experience
 
-    if @task.save
+    if @task.save && current_user.save
       render :show
     end
   end
