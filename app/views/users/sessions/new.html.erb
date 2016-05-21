@@ -1,0 +1,30 @@
+<div class="large-4 large-centered columns">
+<div class="login-box">
+  <div class="row">
+    <div class="large-12 columns">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.email_field :email, autofocus: true, placeholder: "email" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 large-centered columns">
+            <%= f.submit "Log in", class: "button expand" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="large-12 large-centered columns">
+          <%= link_to "New account", signup_path, class: "button expand" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
