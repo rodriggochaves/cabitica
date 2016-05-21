@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
             format: { with: CJR_EMAIL_REGEX }, 
             uniqueness: { case_sensitive: false }
 
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 end

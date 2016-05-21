@@ -2,10 +2,18 @@
 
 var makeTaskCompleteButton = function(id) {
   return "<span class='switch tiny'>" 
-    + "<input class='switch-input' id='task__complete_"
-    + id +"' type='checkbox' />" 
-    + "<label class='switch-paddle' for='task__complete_" + id + "'>" 
+    + "<input class='switch-input' id='task__switch_" + id + "'"
+    + "type='checkbox' />" 
+    + "<label class='switch-paddle' for='task__switch_" + id + "'>" 
     + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
+}
+
+var closeButtonHtml = function(){
+  return "<button class='close-button'>"
+    + "<span>"
+    + "&times"
+    + "</span>"
+    + "</button>"
 }
 
 function extractIdNumber(elem){
@@ -15,8 +23,9 @@ function extractIdNumber(elem){
 }
 
 var completeTask = function(taskElem) {    
+  var taskCallout = taskElem.closest('.task__callout');
   var sendCompleteTaskRequest = function() {
-    taskId = extractIdNumber(taskElem);
+    taskId = extractIdNumber(taskCallout);
     $.ajax({
       url: '/complete_task/' + taskId,
       type: 'GET',
@@ -28,19 +37,39 @@ var completeTask = function(taskElem) {
       }
     });
   };
-  var taskParent = taskElem.parentElement.parentElement;
   if(taskElem.checked){
-    $(taskParent).fadeOut(3000, "swing", sendCompleteTaskRequest);
+    $(taskCallout).fadeOut(3000, "swing", sendCompleteTaskRequest);
   } else {
-    $(taskParent).stop().animate({opacity:'100'});
+    $(taskCallout).stop().animate({opacity:'100'});
   }
+}
+
+var removeTask = function(taskElem){
+  var taskCallout = taskElem.closest('.task__callout');
+  var sendRemoveTaskRequest = function(){
+    taskId = extractIdNumber(taskCallout);
+    $.ajax({
+      url: '/remove_task/' + taskId,
+      type: 'GET',
+      success: function(resp) {
+        console.log("Task removed: " + taskId)
+      },
+      error: function(err) {
+        console.log("Error removing task: " + err)
+      }
+    });
+  };
+  sendRemoveTaskRequest(taskCallout);
+  var taskList = taskCallout.parentNode;
+  taskList.removeChild(taskCallout);
 }
 
 var appendLastTask = function() {
   $.ajax("/last_task.json", {
     success: function(data) {
       $(".tasks__list").append($('<div>', {
-        class: "callout task__callout"
+        class: "callout task__callout",
+        id: "task_" + data.id
       }));
 
       var lastTask = $(".task__callout").last();
@@ -49,6 +78,7 @@ var appendLastTask = function() {
         text: data.description
       }));
       $(".task__description").val("");
+      lastTask.append(closeButtonHtml());
     },
     error: function(er) {
       console.log("Error loading last task");
@@ -78,5 +108,8 @@ $(document).ready(function() {
   });
   $('.tasks__list').on("click", ".switch-input", function(){
     completeTask(this);
+  });
+  $('.tasks__list').on("click", ".close-button", function(){
+    removeTask(this);
   });
 });

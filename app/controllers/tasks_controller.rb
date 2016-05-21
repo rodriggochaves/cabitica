@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :complete_task]
+  before_action :set_task, only: [:show, :complete_task, :remove_task]
 
   def index
     @tasks = current_user.tasks
@@ -32,12 +32,17 @@ class TasksController < ApplicationController
     end
   end
 
+  def remove_task
+    @task.destroy 
+    render :show
+  end
+
   private
   def task_params
     params.permit(:description)
   end
 
   def set_task
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
   end
 end

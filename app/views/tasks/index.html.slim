@@ -18,11 +18,10 @@ br
   div.tasks__list
     - @tasks.each do |task|
       - if !task.completed
-        div.callout.task__callout
+        div.callout.task__callout [id="task_#{task.id}"]
           span.switch.tiny
-            input.switch-input [type="checkbox" id="task__complete_#{task.id}"
-              class="task_complete"]
-            label.switch-paddle for="task__complete_#{task.id}"
+            input.switch-input [id="task__switch_#{task.id}" type="checkbox" class="task_complete"]
+            label.switch-paddle for="task__switch_#{task.id}"
               span.show-for-sr Completar tarefa
           p = task.description
           button.close-button
