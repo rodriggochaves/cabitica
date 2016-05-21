@@ -5,7 +5,9 @@ var makeTaskCompleteButton = function(id) {
     + "<input class='switch-input' id='task__switch_" + id + "'"
     + "type='checkbox' />" 
     + "<label class='switch-paddle' for='task__switch_" + id + "'>" 
-    + "<span class='show-for-sr'>Completar tarefa</span></label></span>";
+    + " <span class='show-for-sr'>Completar tarefa</span>" +
+    + "</label>" +
+    + "</span>";
 }
 
 var closeButtonHtml = function(){

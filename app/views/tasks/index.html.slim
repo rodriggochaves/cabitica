@@ -16,12 +16,6 @@ br
 
 .row
   div.tasks__list
-    - @tasks.each do |task|
-      div.callout.task__callout [id="task_#{task.id}"]
-        span.switch.tiny
-          input.switch-input [id="task__switch_#{task.id}" type="checkbox" class="task_complete"]
-          label.switch-paddle for="task__switch_#{task.id}"
-            span.show-for-sr Completar tarefa
-        p = task.description
-        button.close-button
-          span &times;
+    = render @tasks
+
+  div.habits__list
