@@ -4,7 +4,8 @@ function extractIdNumber(id){
 }
 
 var completeTask = function(switchTaskElem) {    
-  var id = $(switchTaskElem).closest('.task__callout').attr("id");
+  var taskCallout = $(switchTaskElem).closest('.task__callout');
+  var id = taskCallout.attr("id");
   var taskId = extractIdNumber(id);
   var sendCompleteTaskRequest = function() {
     $.ajax({
@@ -18,7 +19,7 @@ var completeTask = function(switchTaskElem) {
       }
     });
   };
-  if(taskElem.checked){
+  if(switchTaskElem.checked){
     $(taskCallout).fadeOut(3000, "swing", sendCompleteTaskRequest);
   } else {
     $(taskCallout).stop().animate({opacity:'100'});
