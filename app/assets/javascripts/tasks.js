@@ -1,8 +1,3 @@
-function extractIdNumber(id){
-  idNum = id.substring(id.lastIndexOf("_")+1);
-  return idNum;
-}
-
 var completeTask = function(switchTaskElem) {    
   var taskCallout = $(switchTaskElem).closest('.task__callout');
   var id = taskCallout.attr("id");

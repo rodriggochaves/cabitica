@@ -10,3 +10,15 @@
 .hide {
   display: none;
 }
+
+
+.verticalcenter {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+
+

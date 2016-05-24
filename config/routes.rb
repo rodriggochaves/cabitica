@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :habits
   get '/last_task' => 'tasks#last_task'
   get '/tasks/:id' => 'tasks#show'
   get '/tasks' => 'tasks#index'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'tasks#index', as: :authenticated_root
+      root 'users/sessions#index', as: :authenticated_root
     end
 
     unauthenticated do
