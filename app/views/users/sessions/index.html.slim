@@ -1,36 +1,29 @@
 div.main_container.row
-  div.tasks_container.large-6.columns
-    div.row
-      div.column
-        h1 Suas Tarefas
+  div.tasks_container.large-6.columns.callout
+    div.column
+      h1 Suas Tarefas
 
-    div.row
-      div.input-group
-        = text_field_tag :description, "", 
-          class: "task__description input-group-field"
-        div.input-group-button
-          button.button.task__add Adicionar
+    div.input-group
+      = text_field_tag :description, "", 
+        class: "task__description input-group-field"
+      div.input-group-button
+        button.button.task__add Adicionar
+
+    br
+    div.tasks__list
+      = render partial: "tasks/task", collection: @tasks
+
+  div.habits_container.large-6.columns.callout
+    div.column
+      h1 Seus Hábitos
+
+    div.input-group
+      = text_field_tag :description, "", 
+        class: "habit__description input-group-field"
+      div.input-group-button
+        button.button.habit__add Adicionar
 
     br
 
-    .row
-      div.tasks__list
-        = render partial: "tasks/task", collection: @tasks
-
-  div.habits_container.large-6.columns
-    div.row
-      div.column
-        h1 Seus Hábitos
-
-    div.row
-      div.input-group
-        = text_field_tag :description, "", 
-          class: "habit__description input-group-field"
-        div.input-group-button
-          button.button.habit__add Adicionar
-
-    br
-
-    .row
-      div.habits__list
-        = render partial: "habits/habit", collection: @habits
+    div.habits__list
+      = render partial: "habits/habit", collection: @habits
