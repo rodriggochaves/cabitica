@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   post '/tasks' => 'tasks#create'
   get '/complete_task/:id' => 'tasks#complete_task'
   get '/remove_task/:id' => 'tasks#remove_task'
+
+  get '/habits' => 'habits#index'
+  post '/habits' => 'habits#create'
+  get '/complete_habit/:id' => 'habits#complete_habit'
+  get '/remove_habit/:id' => 'habits#remove_habit'
   # root 'users#new'
   devise_for :users, controllers: { 
     sessions: 'users/sessions',

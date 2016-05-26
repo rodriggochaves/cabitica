@@ -1,38 +1,29 @@
 class HabitsController < ApplicationController
   before_action :set_habit, only: [:show, :edit, :update, :destroy]
 
-  # GET /habits
-  # GET /habits.json
   def index
     @habits = Habit.all
   end
 
-  # GET /habits/1
-  # GET /habits/1.json
   def show
   end
 
-  # GET /habits/new
   def new
     @habit = Habit.new
   end
 
-  # GET /habits/1/edit
   def edit
   end
 
-  # POST /habits
-  # POST /habits.json
   def create
-    @habit = current_user.tasks.new(task_params)
+    debugger
+    @habit = current_user.habits.new(habit_params)
 
     if @habit.save
       respond_to :js
     end
   end
 
-  # PATCH/PUT /habits/1
-  # PATCH/PUT /habits/1.json
   def update
     respond_to do |format|
       if @habit.update(habit_params)
@@ -45,8 +36,6 @@ class HabitsController < ApplicationController
     end
   end
 
-  # DELETE /habits/1
-  # DELETE /habits/1.json
   def destroy
     @habit.destroy
     respond_to do |format|
@@ -58,11 +47,11 @@ class HabitsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_habit
-      @habit = Habit.find(params[:id])
+      @habit = current_user.habits.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def habit_params
-      params.require(:habit).permit(:description, :user_id)
+      params.permit(:description)
     end
 end
