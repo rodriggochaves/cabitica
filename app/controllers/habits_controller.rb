@@ -1,18 +1,14 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_habit, only: [:show, :update, :destroy, :upvote_habit,
+                                   :downvote_habit]
 
   def index
     @habits = current_user.habits
   end
 
-  def show
-  end
-
   def new
     @habit = Habit.new
-  end
-
-  def edit
   end
 
   def create
@@ -21,6 +17,14 @@ class HabitsController < ApplicationController
     if @habit.save
       respond_to :js
     end
+  end
+
+  def upvote_habit
+    #calculate exp increase
+  end
+
+  def downvote_habit
+    #calculate exp decrease
   end
 
   def update

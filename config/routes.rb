@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   get '/habits' => 'habits#index'
   post '/habits' => 'habits#create'
-  get '/complete_habit/:id' => 'habits#complete_habit'
-  get '/remove_habit/:id' => 'habits#remove_habit'
+  get '/upvote_habit/:id' => 'habits#upvote_habit'
+  get '/downvote_habit/:id' => 'habits#downvote_habit'
   # root 'users#new'
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
