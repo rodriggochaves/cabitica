@@ -1,7 +1,7 @@
-div.callout.task__callout [id="habit_#{habit.id}"]
+div.callout.habit__callout [id="habit_#{habit.id}"]
   span.switch.tiny
-    input.switch-input [id="habit__switch#{habit.id}" type="checkbox" class="habit_complete"]
-      label.switch-paddle for="habit__switch#{habit.id}"
+    input.switch-input.habit_complete [id="habit__switch_#{habit.id}" type="checkbox"]
+      label.switch-paddle for="habit__switch_#{habit.id}"
         span.show-for-sr Completar habito
   p = habit.description
   button.close-button
