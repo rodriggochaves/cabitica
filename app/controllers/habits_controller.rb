@@ -2,7 +2,7 @@ class HabitsController < ApplicationController
   before_action :set_habit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @habits = Habit.all
+    @habits = current_user.habits
   end
 
   def show

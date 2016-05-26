@@ -1,20 +1,13 @@
-br
+div.tasks_container.large-6.columns.callout
+  div.column
+    h1 Suas Tarefas
 
-div.row
-  h1 Suas Tarefas
-
-br
-
-div.row
   div.input-group
     = text_field_tag :description, "", 
       class: "task__description input-group-field"
     div.input-group-button
       button.button.task__add Adicionar
 
-br
-
-.row
+  br
   div.tasks__list
     = render @tasks
-
