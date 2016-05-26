@@ -1,5 +1,5 @@
 div.main_container.row
-  div.tasks_container.large-6.columns.callout
+  div.callout.tasks_container.large-6.columns
     div.column
       h1 Suas Tarefas
 
@@ -13,7 +13,7 @@ div.main_container.row
     div.tasks__list
       = render partial: "tasks/task", collection: @tasks
 
-  div.habits_container.large-6.columns.callout
+  div.callout.habits_container.large-6.columns
     div.column
       h1 Seus Hábitos
 
@@ -24,6 +24,5 @@ div.main_container.row
         button.button.habit__add Adicionar
 
     br
-
     div.habits__list
       = render partial: "habits/habit", collection: @habits
