@@ -1,5 +1,5 @@
 var completeHabit = function(switchHabitElem) {    
-  var habitCallout = $(switchHabitElem).closest('.habit_callout');
+  var habitCallout = $(switchHabitElem).closest('.habit__callout');
   var id = habitCallout.attr("id");
   var habitId = extractIdNumber(id);
   var sendCompleteHabitRequest = function() {
