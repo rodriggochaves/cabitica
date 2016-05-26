@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def last_task
-    @task = Task.last
+    @task = current_user.tasks.last
     render :show
   end
 
