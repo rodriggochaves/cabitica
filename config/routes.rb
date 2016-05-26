@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/habits' => 'habits#create'
   get '/upvote_habit/:id' => 'habits#upvote_habit'
   get '/downvote_habit/:id' => 'habits#downvote_habit'
-  # root 'users#new'
+  
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     registrations: 'users/registrations'

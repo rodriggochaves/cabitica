@@ -22,11 +22,11 @@ var completeHabit = function(switchHabitElem) {
 }
 
 var removeHabit = function(removeHabitElem){
-  var id = $(removeHabitElem).closest('.habit_callout').attr("id");
+  var id = $(removeHabitElem).closest('.habit__callout').attr("id");
   var habitId = extractIdNumber(id);
   $.ajax({
-    url: '/remove_habit/' + habitId,
-    type: 'GET',
+    url: '/habits/' + habitId,
+    type: 'DELETE',
     success: function(resp) {
       $("#habit_" + habitId).remove();
     },

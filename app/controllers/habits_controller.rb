@@ -41,10 +41,7 @@ class HabitsController < ApplicationController
 
   def destroy
     @habit.destroy
-    respond_to do |format|
-      format.html { redirect_to habits_url, notice: 'Habit was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render :show
   end
 
   private
