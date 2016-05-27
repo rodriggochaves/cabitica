@@ -17,11 +17,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def last_task
-    @task = current_user.tasks.last
-    render :show
-  end
-
   def complete_task
     @task.completed = true
 
@@ -30,7 +25,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def remove_task
+  def destroy
     @task.destroy 
     render :show
   end

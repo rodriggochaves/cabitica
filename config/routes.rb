@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
   resources :habits
-  get '/last_task' => 'tasks#last_task'
-  get '/tasks/:id' => 'tasks#show'
+  resources :tasks
+
   get '/tasks' => 'tasks#index'
   post '/tasks' => 'tasks#create'
   get '/complete_task/:id' => 'tasks#complete_task'
-  get '/remove_task/:id' => 'tasks#remove_task'
 
   get '/habits' => 'habits#index'
   post '/habits' => 'habits#create'
