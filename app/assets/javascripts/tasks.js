@@ -25,8 +25,8 @@ var removeTask = function(removeTaskElem){
   var id = $(removeTaskElem).closest('.task__callout').attr("id");
   var taskId = extractIdNumber(id);
   $.ajax({
-    url: '/remove_task/' + taskId,
-    type: 'GET',
+    url: '/tasks/' + taskId,
+    type: 'DELETE',
     success: function(resp) {
       $("#task_" + taskId).remove();
     },
