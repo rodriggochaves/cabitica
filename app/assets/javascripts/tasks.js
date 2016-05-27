@@ -21,21 +21,6 @@ var completeTask = function(switchTaskElem) {
   }
 }
 
-var removeTask = function(removeTaskElem){
-  var id = $(removeTaskElem).closest('.task__callout').attr("id");
-  var taskId = extractIdNumber(id);
-  $.ajax({
-    url: '/tasks/' + taskId,
-    type: 'DELETE',
-    success: function(resp) {
-      $("#task_" + taskId).remove();
-    },
-    error: function(err) {
-      console.log("Error removing task: " + err)
-    }
-  });
-}
-
 $(document).ready(function() {
   $('.task__add').click(function() {
     var description = $('.task__description').val();
@@ -55,10 +40,12 @@ $(document).ready(function() {
       }
     });
   });
-  $('.tasks__list').on("click", ".switch-input", function(){
-    completeTask(this);
-  });
-  $('.tasks__list').on("click", ".close-button", function(){
-    removeTask(this);
-  });
+  $('.tasks__list')
+    .on("click", ".switch-input", function(){
+      completeTask(this);
+    }).on("click", ".close-button", function(){
+      var id = $(this).closest('.task__callout').attr("id");
+      var taskId = extractIdNumber(id);
+      removeElem("tasks", taskId);
+    });
 });

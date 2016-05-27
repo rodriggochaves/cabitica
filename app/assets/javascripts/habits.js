@@ -32,24 +32,9 @@ var downvoteHabit = function(downvoteHabitElem) {
   // });
 }
 
-var removeHabit = function(removeHabitElem){
-  var id = $(removeHabitElem).closest('.habit__callout').attr("id");
-  var habitId = extractIdNumber(id);
-  $.ajax({
-    url: '/habits/' + habitId,
-    type: 'DELETE',
-    success: function(resp) {
-      $("#habit_" + habitId).remove();
-    },
-    error: function(err) {
-      console.log("Error removing habit: " + err)
-    }
-  });
-}
-
 $(document).ready(function() {
-  $('.habit__add').click(function() {
-    var description = $('.habit__description').val();
+  $('.habits__add').click(function() {
+    var description = $('.habits__description').val();
 
     $.ajax({
       url: "/habits.js",
@@ -67,11 +52,13 @@ $(document).ready(function() {
     });
   });
   $('.habits__list')
-    .on("click", ".habit__plus", function(){
+    .on("click", ".habits__plus", function(){
       upvoteHabit(this);
-    }).on("click", ".habit__minus", function(){
+    }).on("click", ".habits__minus", function(){
       downvoteHabit(this);
     }).on("click", ".close-button", function(){
-      removeHabit(this);
+      var id = $(this).closest('.habit__callout').attr("id");
+      var habitId = extractIdNumber(id);
+      removeElem("habits", habitId);
     });
 });
