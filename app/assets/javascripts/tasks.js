@@ -24,21 +24,8 @@ var completeTask = function(switchTaskElem) {
 $(document).ready(function() {
   $('.task__add').click(function() {
     var description = $('.task__description').val();
-
-    $.ajax({
-      url: "/tasks.js",
-      type: "POST",
-      data: {
-        description: description
-      },
-      dataType: "script",
-      success: function(resp) {
-        console.log("Success adding task");
-      },
-      error: function(er) {
-        console.log(er);
-      }
-    });
+    var elemType = "tasks";
+    addElem(elemType, description);
   });
   $('.tasks__list')
     .on("click", ".switch-input", function(){

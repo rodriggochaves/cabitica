@@ -35,21 +35,8 @@ var downvoteHabit = function(downvoteHabitElem) {
 $(document).ready(function() {
   $('.habits__add').click(function() {
     var description = $('.habits__description').val();
-
-    $.ajax({
-      url: "/habits.js",
-      type: "POST",
-      data: {
-        description: description
-      },
-      dataType: "script",
-      success: function(resp) {
-        console.log("Success adding habit");
-      },
-      error: function(er) {
-        console.log(er);
-      }
-    });
+    var elemType = "habits";
+    addElem(elemType, description);
   });
   $('.habits__list')
     .on("click", ".habits__plus", function(){

@@ -18,3 +18,20 @@ var removeElem = function(elemType, elemId){
     }
   });
 }
+var addElem = function(elemType, description){
+  url = "/" + elemType + ".js";
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: {
+      description: description
+    },
+    dataType: "script",
+    success: function(resp) {
+      console.log("Success adding habit");
+    },
+    error: function(er) {
+      console.log(er);
+    }
+  });
+}
