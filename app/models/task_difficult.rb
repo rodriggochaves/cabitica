@@ -1,3 +1,4 @@
 class TaskDifficult < ActiveRecord::Base
-  belongs_to :task
+  has_many :task, class_name: "Task",
+                    foreign_key: "task_id"
 end
