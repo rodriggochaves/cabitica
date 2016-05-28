@@ -1,0 +1,2 @@
+$(".tasks__list")
+  .append("<%= escape_javascript(render partial: 'task', locals: {task: @task})%>");

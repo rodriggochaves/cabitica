@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     @task.difficult = TaskDifficult.first
 
     if @task.save
-      render :show
+      respond_to :js
     end
   end
 
