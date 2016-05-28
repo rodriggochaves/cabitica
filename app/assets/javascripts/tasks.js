@@ -41,25 +41,47 @@ var removeTask = function(removeTaskElem){
   });
 }
 
-$(document).ready(function() {
-  $('.task__add').click(function() {
-    var description = $('.task__description').val();
+// função que manda o conteúdo do input task__description via ajax para a 
+// tarefa ser criada
+var sentTaskDescription = function() {
+  var taskDescription = $('.task__description');
+  $.ajax({
+    url: "/tasks.js",
+    type: "POST",
+    data: {
+      description: taskDescription.val()
+    },
+    dataType: "script",
+    success: function(resp) {
+      console.log("Success adding task");
+    },
+    error: function(er) {
+      console.log(er);
+    }
+  });
+  taskDescription.val("");
+}
 
-    $.ajax({
-      url: "/tasks.js",
-      type: "POST",
-      data: {
-        description: description
-      },
-      dataType: "script",
-      success: function(resp) {
-        console.log("Success adding task");
-      },
-      error: function(er) {
-        console.log(er);
+$(document).ready(function() {
+
+  // captura o evento de click no botão task__add e manda o conteudo do input 
+  // para criar a tarefa
+  $('.task__add').click(function() {
+    sentTaskDescription();
+  });
+
+  // captura o `enter` quando o input task__description está selecionado e 
+  // manda para o servidor.
+  $('.task__description').on("focus", function() {
+    $(this).keypress(function(e) {
+      if(e.which == 13) {
+        sentTaskDescription();
+        // impede que mais de uma tarefa sejam adicionadas sequencialmente
+        // $(this).blur();
       }
     });
   });
+
   $('.tasks__list').on("click", ".switch-input", function(){
     completeTask(this);
   });
