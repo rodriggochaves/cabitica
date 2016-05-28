@@ -1,12 +1,14 @@
 .task__callout > p {
-  margin-bottom: 0px;
   display: inline-block;
-  height: 10px;
+  height: 25px;
   margin-left: 20px;
-  position: absolute;
-  top: 20px;
+  @include centerer(false, true);
 }
 
 .hide {
   display: none;
+}
+
+.task__destroy--button {
+  @include centerer(false, true);
 }
