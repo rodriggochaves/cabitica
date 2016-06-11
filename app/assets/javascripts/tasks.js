@@ -22,11 +22,6 @@ var completeTask = function(switchTaskElem) {
 }
 
 $(document).ready(function() {
-  $('.task__add').click(function() {
-    var description = $('.task__description').val();
-    var elemType = "tasks";
-    addElem(elemType, description);
-  });
   $('.tasks__list')
     .on("click", ".switch-input", function(){
       completeTask(this);

@@ -33,11 +33,6 @@ var downvoteHabit = function(downvoteHabitElem) {
 }
 
 $(document).ready(function() {
-  $('.habits__add').click(function() {
-    var description = $('.habits__description').val();
-    var elemType = "habits";
-    addElem(elemType, description);
-  });
   $('.habits__list')
     .on("click", ".habits__plus", function(){
       upvoteHabit(this);
