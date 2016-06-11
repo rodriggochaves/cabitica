@@ -1,0 +1,2 @@
+$(".habits__list")
+  .append("<%= escape_javascript(render partial: 'habit', locals: {habit: @habit})%>");

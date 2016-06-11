@@ -35,5 +35,5 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-# added by GitSavvy
-/.byebug_history
+# byebug history
+.byebug_history

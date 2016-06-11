@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :complete_task, :remove_task]
+  before_action :set_task, only: [:show, :destroy, :complete_task, :remove_task]
 
   def index
     @tasks = current_user.tasks
@@ -19,11 +19,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def last_task
-    @task = Task.last
-    render :show
-  end
-
   def complete_task
     @task.completed = true
     current_user.experience += @task.experience
@@ -33,7 +28,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def remove_task
+  def destroy
     @task.destroy 
     render :show
   end

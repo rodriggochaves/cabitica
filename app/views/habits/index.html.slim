@@ -1,0 +1,14 @@
+div.habits_container.large-6.columns.callout
+  div.column
+    h1 Seus Hábitos
+
+  div.input-group
+    = text_field_tag :description, "", 
+      class: "habit__description input-group-field"
+    div.input-group-button
+      button.button.habit__add Adicionar
+
+  br
+
+  div.habits__list
+    = render @habits

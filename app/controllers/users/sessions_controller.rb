@@ -2,6 +2,8 @@ class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
 
   def index
+    @tasks = current_user.tasks
+    @habits = current_user.habits
   end
 
   # GET /resource/sign_in

@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
 
   has_many :tasks, dependent: :destroy
+  has_many :habits, dependent: :destroy
 end

@@ -1,0 +1,28 @@
+div.main_container.row
+  div.callout.tasks_container.large-6.columns
+    div.column
+      h1 Suas Tarefas
+
+    div.input-group
+      = text_field_tag :description, "", 
+        class: "task__description input-group-field"
+      div.input-group-button
+        button.button.task__add Adicionar
+
+    br
+    div.tasks__list
+      = render partial: "tasks/task", collection: @tasks
+
+  div.callout.habits_container.large-6.columns
+    div.column
+      h1 Seus Hábitos
+
+    div.input-group
+      = text_field_tag :description, "", 
+        class: "habits__description input-group-field"
+      div.input-group-button
+        button.button.habits__add Adicionar
+
+    br
+    div.habits__list
+      = render partial: "habits/habit", collection: @habits

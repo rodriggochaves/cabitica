@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
-  get '/last_task' => 'tasks#last_task'
-  get '/tasks/:id' => 'tasks#show'
+  resources :habits
+  resources :tasks
+
   get '/tasks' => 'tasks#index'
   post '/tasks' => 'tasks#create'
   get '/complete_task/:id' => 'tasks#complete_task'
-  get '/remove_task/:id' => 'tasks#remove_task'
 
+  get '/habits' => 'habits#index'
+  post '/habits' => 'habits#create'
+  get '/upvote_habit/:id' => 'habits#upvote_habit'
+  get '/downvote_habit/:id' => 'habits#downvote_habit'
+  
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -14,7 +19,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'tasks#index', as: :authenticated_root
+      root 'users/sessions#index', as: :authenticated_root
     end
 
     unauthenticated do

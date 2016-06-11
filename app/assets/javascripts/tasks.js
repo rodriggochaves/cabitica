@@ -1,8 +1,3 @@
-function extractIdNumber(id){
-  idNum = id.substring(id.lastIndexOf("_")+1);
-  return idNum;
-}
-
 var completeTask = function(switchTaskElem) {    
   var taskCallout = $(switchTaskElem).closest('.task__callout');
   var id = taskCallout.attr("id");
@@ -26,66 +21,21 @@ var completeTask = function(switchTaskElem) {
   }
 }
 
-var removeTask = function(removeTaskElem){
-  var id = $(removeTaskElem).closest('.task__callout').attr("id");
-  var taskId = extractIdNumber(id);
-  $.ajax({
-    url: '/remove_task/' + taskId,
-    type: 'GET',
-    success: function(resp) {
-      $("#task_" + taskId).remove();
-    },
-    error: function(err) {
-      console.log("Error removing task: " + err)
-    }
-  });
-}
-
-// função que manda o conteúdo do input task__description via ajax para a 
-// tarefa ser criada
-var sentTaskDescription = function() {
-  var taskDescription = $('.task__description');
-  $.ajax({
-    url: "/tasks.js",
-    type: "POST",
-    data: {
-      description: taskDescription.val()
-    },
-    dataType: "script",
-    success: function(resp) {
-      console.log("Success adding task");
-    },
-    error: function(er) {
-      console.log(er);
-    }
-  });
-  taskDescription.val("");
-}
-
 $(document).ready(function() {
 
   // captura o evento de click no botão task__add e manda o conteudo do input 
   // para criar a tarefa
   $('.task__add').click(function() {
-    sentTaskDescription();
+    var description = $('.task__description').val();
+    var elemType = "tasks";
+    addElem(elemType, description);
   });
-
-  // captura o `enter` quando o input task__description está selecionado e 
-  // manda para o servidor.
-  $('.task__description').on("focus", function() {
-    $(this).keypress(function(e) {
-      if(e.which == 13) {
-        sentTaskDescription();
-        // impede que mais de uma tarefa sejam adicionadas sequencialmente
-        // $(this).blur();
-      }
+  $('.tasks__list')
+    .on("click", ".switch-input", function(){
+      completeTask(this);
+    }).on("click", ".close-button", function(){
+      var id = $(this).closest('.task__callout').attr("id");
+      var taskId = extractIdNumber(id);
+      removeElem("tasks", taskId);
     });
-  });
-
-  $('.tasks__list').on("click", ".switch-input", function(){
-    completeTask(this);
-  });
-  $('.tasks__list').on("click", ".close-button", function(){
-    removeTask(this);
-  });
 });
