@@ -12,7 +12,6 @@ class HabitsController < ApplicationController
   end
 
   def create
-    debugger
     @habit = current_user.habits.new(habit_params)
 
     if @habit.save

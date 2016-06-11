@@ -18,11 +18,12 @@ div.main_container.row
     div.column
       h1 Seus Hábitos
 
-    div.input-group
-      = text_field_tag :description, "", 
-        class: "habits__description input-group-field"
-      div.input-group-button
-        button.button.habits__add Adicionar
+    = form_tag("/habits.js", method: "post", remote: "true")
+      div.input-group
+        = text_field_tag(:description, "", placeholder: "Descrição",
+                          class: "input-description input-group-field")
+        div.input-group-button
+          = submit_tag("Adicionar", class: "button")
 
     br
     div.habits__list

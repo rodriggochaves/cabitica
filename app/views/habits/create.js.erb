@@ -1,2 +1,4 @@
 $(".habits__list")
   .append("<%= escape_javascript(render partial: 'habit', locals: {habit: @habit})%>");
+
+$(".habits_container .input-description").val('')
