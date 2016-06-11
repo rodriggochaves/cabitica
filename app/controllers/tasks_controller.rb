@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :destroy, :complete_task, :remove_task]
+  before_action :set_task, only: [:show, :destroy, :complete_task, 
+    :remove_task]
 
   def index
     @tasks = current_user.tasks
@@ -11,6 +12,8 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+    @task.experience = 10;
+    @task.difficult = TaskDifficult.first
 
     if @task.save
       respond_to :js
@@ -19,8 +22,9 @@ class TasksController < ApplicationController
 
   def complete_task
     @task.completed = true
+    current_user.experience += @task.experience
 
-    if @task.save
+    if @task.save && current_user.save
       render :show
     end
   end
