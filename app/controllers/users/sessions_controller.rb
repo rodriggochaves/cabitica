@@ -2,7 +2,7 @@ class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
 
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.not_completed
     @habits = current_user.habits
   end
 
