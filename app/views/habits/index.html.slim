@@ -3,11 +3,11 @@ div.habits_container.large-6.columns.callout
     h1 Seus Hábitos
 
   div.input-group
-    = text_field_tag :description, "", 
-      class: "habit__description input-group-field"
-    div.input-group-button
-      button.button.habit__add Adicionar
-
+    = form_tag("", method: "get")
+      = text_field_tag :description, placeholder: "Descrição"
+      = submit_tag("Adicionar")
+      /div.input-group-button
+      /  button.button.habit__add Adicionar
   br
 
   div.habits__list
