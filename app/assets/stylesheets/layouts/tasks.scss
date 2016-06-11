@@ -2,7 +2,8 @@
   display: inline-block;
   height: 25px;
   margin-left: 20px;
-  @include centerer(false, true);
+  position: absolute;
+  top: 15px;
 }
 
 .hide {
@@ -25,4 +26,8 @@
     color: gray;
     font-size: 20px;
   }
+}
+
+.edit_options {
+  display: none;
 }

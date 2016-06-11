@@ -38,4 +38,20 @@ $(document).ready(function() {
       var taskId = extractIdNumber(id);
       removeElem("tasks", taskId);
     });
+
+  $('.edit_button').click(function() {
+    var taskCallout = $(this).parent();
+    var editOptions = $(this).siblings(".edit_options"); 
+    if( !$( this ).data( "actived" ) ) {
+      taskCallout.css("height", "200px");
+      editOptions.css("display", "inline-block");
+      $( this ).data( "actived", true )
+    } else {
+      taskCallout.css("height", "64px");
+      editOptions.css("display", "none");
+      $( this ).data( "actived", false )
+    }
+    
+    
+  });
 });
