@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   scope :not_completed, -> { where(completed: false) }
   belongs_to :user
-  belongs_to :difficult, class_name: "TaskDifficult", 
-                         foreign_key: "task_difficult_id"
+  belongs_to :difficult, class_name: "Difficult", 
+                         foreign_key: "difficult_id"
 end

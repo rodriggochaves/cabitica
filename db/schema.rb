@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523220848) do
+ActiveRecord::Schema.define(version: 20160625142432) do
+
+  create_table "difficults", force: :cascade do |t|
+    t.string   "description"
+    t.decimal  "xp_factor",   precision: 5, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "habits", force: :cascade do |t|
     t.string   "description"
@@ -37,8 +44,10 @@ ActiveRecord::Schema.define(version: 20160523220848) do
     t.integer  "user_id"
     t.decimal  "experience"
     t.integer  "task_difficult_id"
+    t.integer  "difficult_id"
   end
 
+  add_index "tasks", ["difficult_id"], name: "index_tasks_on_difficult_id"
   add_index "tasks", ["task_difficult_id"], name: "index_tasks_on_task_difficult_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 

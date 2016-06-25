@@ -10,7 +10,7 @@
 
 User.create!(email: "admin@cjr.org.br", password: "admin123")
 
-TaskDifficult.create(description: "Trivial", experience_scale: 0.5)
-TaskDifficult.create(description: "Fácil", experience_scale: 1.0)
-TaskDifficult.create(description: "Médio", experience_scale: 1.5)
-TaskDifficult.create(description: "Díficil", experience_scale: 2.0)
+Difficult.create(description: "Trivial", xp_factor: 0.5)
+Difficult.create(description: "Fácil", xp_factor: 1.0)
+Difficult.create(description: "Médio", xp_factor: 1.5)
+Difficult.create(description: "Díficil", xp_factor: 2.0)
