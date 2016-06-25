@@ -34,7 +34,7 @@ class HabitsController < ApplicationController
 
   def downvote_habit
     xp = @xp_service.xp_decrease_amout(@habit, current_user)
-    current_user.experience += xp
+    current_user.experience -= xp
 
     if current_user.save
       respond_to do |format|

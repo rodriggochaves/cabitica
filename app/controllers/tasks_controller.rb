@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :destroy, :complete_task, 
-    :remove_task]
+                                  :remove_task]
+  before_action :set_xp_service, only: [:complete_task]
 
   def index
     @tasks = current_user.tasks
@@ -12,7 +13,6 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
-    @task.experience = 10;
     @task.difficult = Difficult.first
 
     if @task.save
@@ -22,7 +22,9 @@ class TasksController < ApplicationController
 
   def complete_task
     @task.completed = true
-    current_user.experience += @task.experience
+
+    xp = @xp_service.xp_increase_amout(@task, current_user)
+    current_user.experience += xp
 
     if @task.save && current_user.save
       respond_to do |format|
@@ -37,6 +39,11 @@ class TasksController < ApplicationController
   end
 
   private
+  # Setting xp service responsible for habits
+  def set_xp_service
+    @xp_service = TaskExperienceService.new
+  end
+
   def task_params
     params.permit(:description)
   end
