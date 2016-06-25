@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625142432) do
+ActiveRecord::Schema.define(version: 20160625144132) do
 
   create_table "difficults", force: :cascade do |t|
     t.string   "description"
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20160625142432) do
   end
 
   add_index "habits", ["user_id"], name: "index_habits_on_user_id"
-
-  create_table "task_difficults", force: :cascade do |t|
-    t.string   "description"
-    t.decimal  "experience_scale", precision: 5, scale: 2
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-  end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
