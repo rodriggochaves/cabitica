@@ -15,6 +15,7 @@ class HabitsController < ApplicationController
 
   def create
     @habit = current_user.habits.new(habit_params)
+    @habit.difficult = Difficult.first
 
     if @habit.save
       respond_to :js

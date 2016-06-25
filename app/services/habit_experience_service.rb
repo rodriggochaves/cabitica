@@ -4,10 +4,13 @@ class HabitExperienceService
   end
   
   def xp_increase_amout(habit, user)
-    @base_value
+    difficult = habit.difficult
+    @base_value * difficult.xp_factor
   end
 
   def xp_decrease_amout(habit, user)
-    @base_value
+    # TODO add difficult to habit
+    difficult = habit.difficult
+    @base_value * difficult.xp_factor
   end
 end

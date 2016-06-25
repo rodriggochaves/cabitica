@@ -4,6 +4,7 @@ class TaskExperienceService
   end
   
   def xp_increase_amout(task, user)
-    @base_value
+    difficult = task.difficult
+    @base_value * difficult.xp_factor
   end
 end
