@@ -1,7 +1,9 @@
 class HabitsController < ApplicationController
+
   before_action :authenticate_user!
   before_action :set_habit, only: [:show, :update, :destroy, :upvote_habit,
                                    :downvote_habit]
+  before_action :set_xp_service, only: [:upvote_habit, :downvote_habit]
 
   def index
     @habits = current_user.habits
@@ -20,11 +22,25 @@ class HabitsController < ApplicationController
   end
 
   def upvote_habit
-    #calculate exp increase
+    xp = @xp_service.xp_increase_amout(@habit, current_user)
+    current_user.experience += xp
+
+    if current_user.save
+      respond_to do |format|
+        format.js { render :show }
+      end
+    end
   end
 
   def downvote_habit
-    #calculate exp decrease
+    xp = @xp_service.xp_decrease_amout(@habit, current_user)
+    current_user.experience += xp
+
+    if current_user.save
+      respond_to do |format|
+        format.js { render :show }
+      end
+    end
   end
 
   def update
@@ -45,6 +61,10 @@ class HabitsController < ApplicationController
   end
 
   private
+    # Setting xp service responsible for habits
+    def set_xp_service
+      @xp_service = HabitExperienceService.new
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_habit
       @habit = current_user.habits.find_by(id: params[:id])

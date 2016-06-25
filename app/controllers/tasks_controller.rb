@@ -25,7 +25,9 @@ class TasksController < ApplicationController
     current_user.experience += @task.experience
 
     if @task.save && current_user.save
-      render :show
+      respond_to do |format|
+        format.js { render :show }
+      end
     end
   end
 
