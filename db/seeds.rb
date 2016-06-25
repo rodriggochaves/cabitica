@@ -14,3 +14,6 @@ Difficult.create(description: "Trivial", xp_factor: 0.5)
 Difficult.create(description: "Fácil", xp_factor: 1.0)
 Difficult.create(description: "Médio", xp_factor: 1.5)
 Difficult.create(description: "Díficil", xp_factor: 2.0)
+
+BaseValue.create(valuable: "Task", value: 10)
+BaseValue.create(valuable: "Habit", value: 5)

@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625144132) do
+ActiveRecord::Schema.define(version: 20160625145539) do
+
+  create_table "base_values", force: :cascade do |t|
+    t.string  "valuable"
+    t.integer "value"
+  end
 
   create_table "difficults", force: :cascade do |t|
     t.string   "description"
@@ -35,7 +40,6 @@ ActiveRecord::Schema.define(version: 20160625144132) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "user_id"
-    t.decimal  "experience"
     t.integer  "task_difficult_id"
     t.integer  "difficult_id"
   end
