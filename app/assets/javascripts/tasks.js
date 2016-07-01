@@ -21,6 +21,20 @@ var completeTask = function(switchTaskElem) {
   }
 }
 
+function showEditWindow(window) {
+  var taskCallout = window.parent();
+  var editOptions = window.siblings(".edit_options"); 
+  if( !window.data( "actived" ) ) {
+    taskCallout.css( "height", "200px");
+    editOptions.css( "display", "inline-block");
+    window.data( "actived", true )
+  } else {
+    taskCallout.css( "height", "64px" );
+    editOptions.css( "display", "none" );
+    window.data( "actived", false )
+  }
+}
+
 $(document).ready(function() {
   $('.tasks__list')
     .on("click", ".switch-input", function(){
@@ -32,16 +46,6 @@ $(document).ready(function() {
     });
 
   $('.edit_button').click(function() {
-    var taskCallout = $(this).parent();
-    var editOptions = $(this).siblings(".edit_options"); 
-    if( !$( this ).data( "actived" ) ) {
-      taskCallout.css("height", "200px");
-      editOptions.css("display", "inline-block");
-      $( this ).data( "actived", true )
-    } else {
-      taskCallout.css("height", "64px");
-      editOptions.css("display", "none");
-      $( this ).data( "actived", false )
-    }
+    showEditWindow($(this));
   });
 });
