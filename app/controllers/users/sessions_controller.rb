@@ -4,6 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   def index
     @tasks = current_user.tasks.not_completed
     @habits = current_user.habits
+    @difficults = Difficult.all
   end
 
   # GET /resource/sign_in

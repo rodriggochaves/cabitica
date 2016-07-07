@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :destroy, :complete_task, 
-                                  :remove_task]
+                                  :remove_task, :update]
   before_action :set_xp_service, only: [:complete_task]
 
   def index
@@ -31,6 +31,11 @@ class TasksController < ApplicationController
         format.js { render :show }
       end
     end
+  end
+
+  def update
+    difficult = Difficult.find(params[:difficult_options])
+    @task.update_attributes(difficult: difficult)
   end
 
   def destroy

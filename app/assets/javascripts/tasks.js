@@ -21,18 +21,9 @@ var completeTask = function(switchTaskElem) {
   }
 }
 
-function showEditWindow(window) {
-  var taskCallout = window.parent();
-  var editOptions = window.siblings(".edit_options"); 
-  if( !window.data( "actived" ) ) {
-    taskCallout.css( "height", "200px");
-    editOptions.css( "display", "inline-block");
-    window.data( "actived", true )
-  } else {
-    taskCallout.css( "height", "64px" );
-    editOptions.css( "display", "none" );
-    window.data( "actived", false )
-  }
+var showEditWindow = function () {
+  var editOptions = $(this).siblings(".edit_options"); 
+  $(editOptions).toggle();
 }
 
 $(document).ready(function() {
@@ -45,7 +36,5 @@ $(document).ready(function() {
       removeElem("tasks", taskId);
     });
 
-  $('.edit_button').click(function() {
-    showEditWindow($(this));
-  });
+  $('.edit_button').click(showEditWindow);
 });
