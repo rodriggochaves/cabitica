@@ -9,18 +9,11 @@ div.callout.task__callout [id="tasks_#{task.id}"]
     i.fi-pencil
   button.close-button
     span &times;
-  .edit_options
-    = form_tag task_path(task.id), method: :patch, remote: true
-      .row
-        .columns.medium-2
-          = label_tag :difficult_options, "Dificuldade"
-        .columns.medium-10
-          = select_tag "difficult_options", \ 
-            options_from_collection_for_select(@difficults, "id", "description")
-      .row
-        = submit_tag
-
-    
-
-
-
+  div.edit_options
+    = form_tag(task_path(task.id), method: :patch, remote: true)
+      .columns.medium-2
+        = label_tag :difficult_options, "Dificuldade"
+      .columns.medium-10
+        = select_tag "difficult_options", \ 
+          options_from_collection_for_select(@difficults, "id", "description")
+      = submit_tag
