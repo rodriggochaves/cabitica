@@ -1,7 +1,7 @@
 class HabitsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_habit, only: [:show, :update, :destroy, :upvote_habit,
+  before_action :set_habit, only: [:update, :destroy, :upvote_habit,
                                    :downvote_habit]
   before_action :set_xp_service, only: [:upvote_habit, :downvote_habit]
 
