@@ -4,13 +4,6 @@ class TasksController < ApplicationController
                                   :remove_task, :update]
   before_action :set_xp_service, only: [:complete_task]
 
-  def index
-    @tasks = current_user.tasks
-  end
-
-  def show
-  end
-
   def create
     @task = current_user.tasks.new(task_params)
     @task.difficult = Difficult.first

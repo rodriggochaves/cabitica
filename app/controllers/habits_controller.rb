@@ -5,10 +5,6 @@ class HabitsController < ApplicationController
                                    :downvote_habit]
   before_action :set_xp_service, only: [:upvote_habit, :downvote_habit]
 
-  def index
-    @habits = current_user.habits
-  end
-
   def new
     @habit = Habit.new
   end
