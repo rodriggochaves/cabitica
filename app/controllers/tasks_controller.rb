@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:update, :destroy, :complete_task, 
-                                  :remove_task, :update]
+                                  :remove_task]
   before_action :set_xp_service, only: [:complete_task]
 
   def create
