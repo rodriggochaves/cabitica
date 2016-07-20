@@ -1,26 +1,13 @@
-.habit__callout > p {
-  margin-bottom: 0px;
-  display: inline-block;
-  height: 10px;
-  margin-left: 20px;
-  position: absolute;
-  top: 20px;
+.habit__callout { 
+  p {
+    margin-bottom: 0px;
+    display: inline-block;
+    height: 10px;
+    margin-left: 20px;
+    position: absolute;
+    top: 20px;
+  }
+  a {
+    margin-bottom: 0px;
+  }
 }
-
-.habit__callout > a {
-  margin-bottom: 0px;
-}
-
-.hide {
-  display: none;
-}
-
-
-.verticalcenter {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-

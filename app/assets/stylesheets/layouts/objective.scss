@@ -1,0 +1,16 @@
+.verticalcenter {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.hide {
+  display: none;
+}
+
+.callout.editing {
+  border-color: yellow;
+}
+

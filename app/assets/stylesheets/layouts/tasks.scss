@@ -1,42 +1,30 @@
-.task__callout > p {
-  display: inline-block;
-  height: 25px;
-  margin-left: 20px;
-  position: absolute;
-  top: 15px;
-}
-
-.hide {
-  display: none;
-}
-
-.verticalcenter {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.edit_button {
-  position: absolute;
-  right: 50px;
-  top: 17px;
-  i {
-    color: gray;
-    font-size: 20px;
+.task__callout { 
+  p {
+    display: inline-block;
+    height: 25px;
+    margin-left: 20px;
+    position: absolute;
+    top: 15px;
   }
-}
+  input:disabled {
+    background-color: white;
+    border: none;
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+    cursor: default;
+  }
+  .edit_button {
+    position: absolute;
+    right: 50px;
+    top: 17px;
+    i {
+      color: gray;
+      font-size: 20px;
+    }
+  }
 
-.edit_options {
-  display: none;
-}
-
-.task__callout input:disabled {
-  background-color: white;
-  border: none;
-  position: relative;
-  bottom: 5px;
-  left: 5px;
-  cursor: default;
+  .edit_options {
+    display: none;
+  }
 }

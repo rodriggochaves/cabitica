@@ -22,7 +22,9 @@ var completeTask = function(switchTaskElem) {
 }
 
 var showEditWindow = function () {
+  callout = $(this).parent();
   var editOptions = $(this).siblings(".edit_options"); 
+  $(callout).toggleClass('editing')
   $(editOptions).toggle();
 }
 
