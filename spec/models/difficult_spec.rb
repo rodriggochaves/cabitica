@@ -5,7 +5,7 @@ RSpec.describe Difficult, type: :model do
     expect(FactoryGirl.create(:difficult)).to be_valid
   end
 
-  it '.tasks' do
-    expect(FactoryGirl.create(:difficult))
+  it 'has many tasks' do
+    should have_many(:tasks) 
   end
 end
