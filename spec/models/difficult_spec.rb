@@ -8,4 +8,8 @@ RSpec.describe Difficult, type: :model do
   it 'has many tasks' do
     should have_many(:tasks) 
   end
+
+  it 'has many habits' do
+    should have_many(:habits)
+  end
 end
