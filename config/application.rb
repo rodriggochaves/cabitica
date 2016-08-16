@@ -26,6 +26,10 @@ module Cabitica
     config.assets.enable = true
 
     config.generators do |g|
+      g.javascripts       false
+      g.stylesheets       false
+      g.template_engine   false
+      g.helper            false
       g.test_framework :rspec,
         :fixtures => true,
         :view_specs => false,
