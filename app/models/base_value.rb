@@ -1,2 +1,2 @@
-class BaseValue < ActiveRecord::Base
+class BaseValue < ApplicationRecord
 end
