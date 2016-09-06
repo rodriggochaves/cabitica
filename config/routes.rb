@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     unauthenticated do
       root 'users/sessions#new', as: :unauthenticated_root
     end
-
     get 'signup' => 'users/registrations#new'
   end
 

@@ -1,11 +1,12 @@
-nav.ui.menu.inverted.fixed
-  .ui.container
-    .item
-      = current_user.email
-    .item
-      #user_experience = current_user.experience
+- if current_user
+  nav.ui.menu.inverted.fixed
+    .ui.container
+      .item
+        = current_user.email
+      .item
+        #user_experience = current_user.experience
 
-    div.right.menu
-      = link_to 'Logout', destroy_user_session_path, class: 'item', \
-        method: :delete
+      div.right.menu
+        = link_to 'Logout', destroy_user_session_path, class: 'item', \
+          method: :delete
 

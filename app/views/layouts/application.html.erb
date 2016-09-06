@@ -9,17 +9,7 @@
 </head>
 <body>
   <%= render 'layouts/user_header' %>
-
-  <% if notice %>
-    <div class="callout primary">
-      <%= notice %>
-    </div>
-  <% end %>
-  <% if alert %>
-    <div class="callout alert">
-      <%= alert %>
-    </div>
-  <% end %>
+  <%= render 'layouts/alerts' %>
   
   <div class="ui main text container">
     <%= yield %>
