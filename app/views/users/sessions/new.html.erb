@@ -1,30 +1,18 @@
-<div class="large-4 large-centered columns">
-<div class="login-box">
-  <div class="row">
-    <div class="large-12 columns">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="row">
-          <div class="large-12 columns">
-            <%= f.email_field :email, autofocus: true, placeholder: "email" %>
-          </div>
+<div class="ui middle center aligned grid">
+  <div class="vertical_box">
+    <div class="ui stacked segment">
+      <%= form_for(resource, as: resource_name, 
+        url: session_path(resource_name), html: { class: 'ui form'}) do |f| %>
+      
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, placeholder: "email" %>
         </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
-          </div>
+        <div class="field">
+          <%= f.password_field :password, 
+            autocomplete: "off", placeholder: "password" %>
         </div>
-        <div class="row">
-          <div class="large-12 large-centered columns">
-            <%= f.submit "Log in", class: "button expand" %>
-          </div>
-        </div>
+        <%= f.submit "Log in", class: "ui fluid large blue submit button" %>
       <% end %>
-      <div class="row">
-        <div class="large-12 large-centered columns">
-          <%= link_to "New account", signup_path, class: "button expand" %>
-        </div>
-      </div>
     </div>
   </div>
-</div>
 </div>
