@@ -16,4 +16,4 @@ div.callout.task__callout [id="tasks_#{task.id}"]
       .columns.medium-10
         = select_tag "difficult", options_from_collection_for_select( \
           @difficults.to_a, "id", "description")
-  /     = submit_tag
+      = submit_tag

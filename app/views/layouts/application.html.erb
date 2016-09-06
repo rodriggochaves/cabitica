@@ -8,6 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'layouts/user_header' %>
+
   <% if notice %>
     <div class="callout primary">
       <%= notice %>
@@ -18,10 +20,10 @@
       <%= alert %>
     </div>
   <% end %>
-
-<div class="container">
-  <%= yield %>
-</div>
+  
+  <div class="ui main text container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
