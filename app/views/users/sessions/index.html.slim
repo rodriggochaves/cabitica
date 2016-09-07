@@ -1,7 +1,6 @@
-div.main_container.row
-  div.callout.tasks_container.large-6.columns
-    div.column
-      h1 Suas Tarefas
+.main_container.ui.grid
+  .tasks_container.six.column.wide
+    h1 Suas Tarefas
 
     = form_tag("/tasks.js", method: "post", remote: "true")
       div.input-group
@@ -14,9 +13,8 @@ div.main_container.row
     div.tasks__list
       = render partial: "tasks/task", collection: @tasks
 
-  div.callout.habits_container.large-6.columns
-    div.column
-      h1 Seus Hábitos
+  .habits_container.six.column.wide
+    h1 Seus Hábitos
 
     = form_tag("/habits.js", method: "post", remote: "true")
       div.input-group
