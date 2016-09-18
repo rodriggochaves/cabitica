@@ -30,7 +30,7 @@ var showEditWindow = function () {
 
 $(document).ready(function() {
   $('.tasks__list')
-    .on("click", ".switch-input", function(){
+    .on("click", ".switch_input", function(){
       completeTask(this);
     }).on("click", ".close-button", function(){
       var id = $(this).closest('.task__callout').attr("id");

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -31,10 +30,16 @@ ActiveRecord::Schema.define(version: 20160625214812) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "difficult_id"
+    t.index ["difficult_id"], name: "index_habits_on_difficult_id"
+    t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
-  add_index "habits", ["difficult_id"], name: "index_habits_on_difficult_id"
-  add_index "habits", ["user_id"], name: "index_habits_on_user_id"
+  create_table "task_difficults", force: :cascade do |t|
+    t.string   "description"
+    t.decimal  "experience_scale", precision: 5, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
@@ -44,29 +49,27 @@ ActiveRecord::Schema.define(version: 20160625214812) do
     t.integer  "user_id"
     t.integer  "task_difficult_id"
     t.integer  "difficult_id"
+    t.index ["difficult_id"], name: "index_tasks_on_difficult_id"
+    t.index ["task_difficult_id"], name: "index_tasks_on_task_difficult_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  add_index "tasks", ["difficult_id"], name: "index_tasks_on_difficult_id"
-  add_index "tasks", ["task_difficult_id"], name: "index_tasks_on_task_difficult_id"
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",  null: false
-    t.string   "encrypted_password",     default: "",  null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,   null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.decimal  "experience",             default: 0.0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.decimal  "experience",             default: "0.0"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

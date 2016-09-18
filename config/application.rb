@@ -39,5 +39,7 @@ module Cabitica
         :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
+    config.sass.load_paths << File.expand_path('../../vendor/assets/components/')
   end
 end

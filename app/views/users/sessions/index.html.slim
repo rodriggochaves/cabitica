@@ -1,5 +1,5 @@
-.main_container.ui.grid
-  .tasks_container.six.column.wide
+.main_container.ui.grid.fluid.container
+  .tasks_container.eight.wide.column
     h1 Suas Tarefas
 
     = form_tag("/tasks.js", method: "post", remote: "true")
@@ -10,10 +10,10 @@
           = submit_tag("Adicionar", class: "button")
 
     br
-    div.tasks__list
+    div.tasks__list.ui.cards
       = render partial: "tasks/task", collection: @tasks
 
-  .habits_container.six.column.wide
+  .habits_container.eight.wide.column
     h1 Seus Hábitos
 
     = form_tag("/habits.js", method: "post", remote: "true")
