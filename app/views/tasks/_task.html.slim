@@ -1,22 +1,18 @@
-div.card.task__callout [id="tasks_#{task.id}"]
-  .content
-    .header
-      input[value="#{task.description}" disabled]
-    .description
-      div.ui.slider.checkbox
-        input.switch_input [id="task__switch_#{task.id}" 
-        \  type="checkbox"]
-          label.switch-paddle for="task__switch_#{task.id}"
-            span.show-for-sr Completar tarefa
-    button.edit_button [data-active="false"]
-      i.fi-pencil
-    button.close-button
-      span &times;
-    div.edit_options
-      = form_tag(task_path(task.id), method: :patch, remote: true)
-        .columns.medium-2
-          = label_tag :difficult_options, "Dificuldade"
-        .columns.medium-10
-          = select_tag "difficult", options_from_collection_for_select( \
-            @difficults.to_a, "id", "description")
-        = submit_tag
+div.task__callout.ui.segment [id="tasks_#{task.id}"]
+  input.icheck-me.switch_input [id="task__switch_#{task.id}" 
+    \ type="checkbox" data-skin="square" data-color="blue"]
+    label.switch-paddle for="task__switch_#{task.id}"
+  p
+    input[value="#{task.description}" disabled]
+  button.edit_button [data-active="false"]
+    i.fi-pencil
+  button.close_button.ui.icon.button.mini.red
+    = fa_icon 'close'
+  div.edit_options
+    = form_tag(task_path(task.id), method: :patch, remote: true)
+      .columns.medium-2
+        = label_tag :difficult_options, "Dificuldade"
+      .columns.medium-10
+        = select_tag "difficult", options_from_collection_for_select( \
+          @difficults.to_a, "id", "description")
+      = submit_tag

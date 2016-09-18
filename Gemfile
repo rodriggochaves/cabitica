@@ -22,7 +22,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'slim', '~> 3.0', '>= 3.0.6'
 
 # Use ActiveModel has_secure_password
@@ -30,6 +29,8 @@ gem 'slim', '~> 3.0', '>= 3.0.6'
 
 gem 'puma'
 gem 'rspec', '~> 3.4'
+gem 'icheck-rails'
+gem "font-awesome-rails"
 
 gem 'devise'
 # Use Capistrano for deployment

@@ -32,7 +32,7 @@ $(document).ready(function() {
   $('.tasks__list')
     .on("click", ".switch_input", function(){
       completeTask(this);
-    }).on("click", ".close-button", function(){
+    }).on("click", ".close_button", function(){
       var id = $(this).closest('.task__callout').attr("id");
       var taskId = extractIdNumber(id);
       removeElem("tasks", taskId);

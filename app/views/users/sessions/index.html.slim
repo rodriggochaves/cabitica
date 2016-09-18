@@ -10,7 +10,7 @@
           = submit_tag("Adicionar", class: "button")
 
     br
-    div.tasks__list.ui.cards
+    div.tasks__list
       = render partial: "tasks/task", collection: @tasks
 
   .habits_container.eight.wide.column

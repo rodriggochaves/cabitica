@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'icheck'
 //= require semantic
 //= require_tree .

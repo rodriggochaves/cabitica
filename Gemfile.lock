@@ -39,7 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    arel (7.1.1)
+    arel (7.1.2)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -79,6 +79,8 @@ GEM
     faker (1.6.6)
       i18n (~> 0.5)
     ffi (1.9.14)
+    font-awesome-rails (4.6.3.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -97,6 +99,10 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     i18n (0.7.0)
+    icheck-rails (1.0.2.2)
+      jquery-rails
+      rails (>= 3.1.0)
+      sass-rails
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -251,7 +257,9 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  font-awesome-rails
   guard-rspec
+  icheck-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
